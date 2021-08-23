@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Search</title>
+    <link rel="stylesheet" href="{% static 'home/styles.css' %}">
+    <style media="screen">
+      p{
+        color: red;
+        font-family: courier;
+        font-size: 170%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Search your record by filling the details</h1>
+    <h2>fill here</h2>
+      {% if message %}
+        <p>{{ message }}</p>
+      {% endif %}
+      {% if msg1 %}
+        <p style="color:blue">{{ msg1 }}</p>
+      {% endif %}
+    <form action="{% url 'update' %}" method="get">
+      {% csrf_token %}
+    First_name-<input type="text" name="first_name" placeholder="first name">
+     Last Name-<input type="text" name="last_name" placeholder="last name">
+     mobile number- <input type="number" name="mobile_num" placeholder="mobile no.">
+      <input type="submit" value="Search">
+    </form>
+    <br></br>
+    <a href="{% url 'registration' %}">Add a New Record</a>
+    <a href="{% url 'index' %}">Back to home page</a>
+  </body>
+</html>

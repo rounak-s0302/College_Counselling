@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Update</title>
+    <link rel="stylesheet" href="{% static 'home/styles.css' %}">
+  </head>
+  <body>
+    <h1>Update your searched result</h1>
+    <h2>here are the details</h2>
+    <ul>
+      <li>Student's photo- </li>
+      <img src="{{ candidate.student_photo.url }}" alt="Not found">
+      <li>First Name - {{ candidate.first_name }}</li>
+      <li>Middle Name - {{candidate.middle_name }}</li>
+      <li>Last Name- {{ candidate.last_name }}</li>
+      <li>Mobile Number - {{ candidate.mobile_num }}</li>
+        <li>Email ID- {{candidate.email}}</li>
+          <li>Account created on - {{candidate.create_at}}</li>
+            <li>Record Last Modified- {{candidate.last_modified_at}}</li>
+            <li>Ip Address - {{ candidate.ipAddress }}</li>
+            <li>Student's Aadhar Card's Photo </li>
+            <img src="{{ candidate.student_aadhar_photo.url}}" alt="Not Found">
+    </ul>
+    <a href="{% url 'update' %}">Search Another Candidate's info</a>
+    <a href="{% url 'index' %}">Back to home page</a>
+    <h1>Update Form for UGC counselling (JEE 2020)</h1>
+    <h2>Fill The Following Details to Update </h2>
+    <form action="{% url 'update' %}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+      <input type="submit" value="Update">
+    </form>
+    <br></br>
+    <a href="{% url 'update' %}">Search Another Candidate's info</a>
+    <a href="{% url 'index' %}">Back to home page</a>
+
+  </body>
+</html>

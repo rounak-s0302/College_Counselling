@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DELETE</title>
+    <link rel="stylesheet" href="{% static 'home/styles.css' %}">
+  </head>
+  <body>
+    <h1>Delete record by filling the details</h1>
+    <h2>fill here</h2>
+    {% if message %}
+      <p>{{ message }}</p>
+    {% endif %}
+    {% if msg %}
+      <p style="color: blue">{{ msg }}</p>
+    {% endif %}
+    <form action="{% url 'delete' %}" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Delete">
+    </form>
+    <br></br>
+    <a href="{% url 'index' %}">Back to home page</a>
+  </body>
+</html>
